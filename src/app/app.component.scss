@@ -26,13 +26,7 @@ a:hover {
 #bg {
     text-align: center;
     position: relative;
-    max-width: 100%;
     background-color: #ffcc14;
-}
-
-#bg img {
-    height: auto;
-    max-width: 100%;
 }
 
 #bg .button {
@@ -46,6 +40,7 @@ a:hover {
     border: none;
     color: rgb(0, 0, 0);
     font-size: 20px;
+    font-weight: bold;
     padding: 15px;
     width: 200px;
     margin: 5px;
@@ -65,10 +60,8 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
     font-size: 45px;
     padding-top: 130px;
-    font-family: monospace;
 }
 
 #bg h2 {
@@ -77,9 +70,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
     font-size: 30px;
-    font-family: monospace;
 }
 
 .button:hover {
@@ -91,4 +82,18 @@ a:hover {
     text-align: center;
     position: relative;
     max-width: 100%;
+}
+
+#center {
+    background-color: white;
+    padding: 15px;
+}
+
+.rectangle {
+    height: 10px;
+    border-radius: 10px;
+    background-color: #F48024;
+    width: 100%;
+    align-self: center;
+    display: flex;
 }
