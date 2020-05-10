@@ -2,7 +2,7 @@
     <a href="/"><img src="../assets/images/drawer.png" height="12"></a>
     <a href="/"><img src="../assets/images/logo.png " height="30 "></a>
     <input type="search " placeholder="Search " name="search " id="search-bar">
-    <a href="/login "><img src="../assets/images/login.png " height="20 ">Log in</a>
+    <a href="../login.html "><img src="../assets/images/login.png " height="20 ">Log in</a>
     <a href="/signup "><img src="../assets/images/signup.png " height="20 ">Sign up</a>
 </mat-toolbar>
 <div id="bg">
@@ -16,14 +16,70 @@
     </button>
 </div>
 <div id="center" fxLayout="column" fxLayoutAlign="space-between center">
-    <span style="width: 50%;">
+    <span style="width: 50%; margin-bottom: 20px;">
         <h1 style="padding:20px"> For developers, by developers</h1>
         <div class="rectangle" ></div>
         <h2 style="padding:20px">Stack Overflow is an open community for anyone that codes. We help you get answers to your toughest coding questions, share knowledge with your coworkers in private, and find your next dream job.</h2>
-        
     </span>
-</div>
-<div id="bottom">
-    <p>hello world</p>
+    <div id="center2" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card>
+            <mat-card-header>
+                <!-- <div mat-card-avatar><img src="../assets/images/Hari.JPG"></div> -->
+                <mat-card-title>
+                    <h1 style="color:black; text-shadow: 2px 2px gray; ">Public Q&A</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../assets/images/publicq&a.png" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    Get answers to more than 16.5 million questions and give back by sharing your knowledge with others.<br><a href="/signup"> Sign up </a>a for an account.
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary"> Browse Topics</button>
+            </mat-card-actions>
+        </mat-card>
+        <span style="padding:30px;"></span>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    <h1 style="color:black; text-shadow: 2px 2px gray; ">Browse Jobs</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../assets/images/jobs.png" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <br><br><br>
+                <p>
+                    Find the right job through high quality listings and search for roles based on <br>title, technology stack, salary, location, and more..
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary"> Browse Jobs</button>
+            </mat-card-actions>
+        </mat-card>
 
+    </div>
+</div>
+
+<div id="bottom">
+    <h2 style="color: white;">Developers</h2>
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar style="background-image: url(../assets/images/Hari.JPG);background-size: cover;"></div>
+            <mat-card-title>
+                <h3 style="color:black; ">Harivind Premkumar</h3>
+            </mat-card-title>
+            <mat-card-subtitle style="text-align: start;">1MS17CS034</mat-card-subtitle>
+
+        </mat-card-header>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar style="background-image: url(../assets/images/Hari.JPG);background-size: cover;"></div>
+            <mat-card-title>
+                <h3 style="color:black; ">Pranav Hegde</h3>
+            </mat-card-title>
+            <mat-card-subtitle style="text-align: start;">1MS17CS082</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
 </div>
