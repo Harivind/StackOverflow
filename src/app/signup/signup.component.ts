@@ -22,9 +22,9 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
-    if(this.user.invalid){
-      return;
-    }
+    // if(this.user.invalid){
+    //   return;
+    // }
     this.submitted = true;
     this.http.post('/register',(JSON.stringify(this.user.value)));
   }
