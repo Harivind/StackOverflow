@@ -8,30 +8,34 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  http: HttpClient;
-  constructor(private formbuilder:FormBuilder){
-    http: HttpClient;
+  // http: HttpClient;
+  constructor(private formbuilder: FormBuilder, private http: HttpClient) {
+
   }
-  ngOnInit(){
+  ngOnInit() {
     this.user = this.formbuilder.group({
-      firstName:['', Validators.required],
-      lastName:['', Validators.required],
-      email:['', Validators.required],
-      password:['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     })
   }
 
-  signup(){
-    if(this.user.invalid){
-      return;
-    }
+  signup() {
+    // if (this.user.invalid) {
+    //   return;
+    // }
     this.submitted = true;
-    this.http.post('/register',(JSON.stringify(this.user.value)));
+    // alert(JSON.stringify(this.user.value))
+    this.http.post('http://localhost:3000/register', (JSON.stringify(this.user.value))).subscribe(data => {
+      alert(data)
+    });
+    // this.http.post<any>('https://jsonplaceholder.typicode.com/posts', { title: 'Angular POST Request Example' }).
   }
-  submitted : boolean;
-  user:FormGroup;
+  submitted: boolean;
+  user: FormGroup;
 
-  get formData(){
+  get formData() {
     return this.user.controls;
   }
 

@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,8 +39,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
- ],
+    MatFormFieldModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
