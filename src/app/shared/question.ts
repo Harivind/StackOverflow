@@ -1,5 +1,5 @@
 export class Question{
-    id : number;
+    _id : number;
     user: string;
     heading : string;
     description : string;
@@ -7,5 +7,4 @@ export class Question{
     keywords : string[];
     upvotes:number;
     downvotes:number
-    bestAnswerID : number;
 }
