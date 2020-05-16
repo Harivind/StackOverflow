@@ -14,12 +14,14 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatMenuModule} from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     LoginComponent,
     HomeComponent,
     SignupComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AskQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatInputModule,
     MatFormFieldModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

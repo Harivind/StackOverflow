@@ -1,13 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
+import {FormControl, FormGroup, FormBuilder, Validators,} from "@angular/forms";
 
 import { AccountService } from "../account.service";
+
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
@@ -22,14 +17,13 @@ export class SignupComponent implements OnInit {
   status : boolean;
   constructor(
     private formbuilder: FormBuilder,
-    private http: HttpClient,
-    private accServvice: AccountService
+    private accService: AccountService
   ) {}
   ngOnInit() {
     this.submitted=false;
     this.user = this.formbuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
+      // firstName: ["", Validators.required],
+      // lastName: ["", Validators.required],
       username: ["", Validators.required],
       email: ["", Validators.required],
       password: ["",  Validators.minLength(8)],
@@ -39,7 +33,7 @@ export class SignupComponent implements OnInit {
 
   signup() {
     this.submitted = true;
-    this.status = this.accServvice.register(this.user.value);
+    this.status = this.accService.register(this.user.value);
     console.log("signup status: "+this.status);
   }
   get formData() {

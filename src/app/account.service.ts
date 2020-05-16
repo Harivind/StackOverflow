@@ -33,23 +33,25 @@ export class AccountService {
     this.router.navigate(["/login"]);
   }
 
+  isLogedin() {
+    if (localStorage.getItem("user")) return true;
+    return false;
+  }
+
   register(user: User) {
     this.http.post("http://localhost:3000/register", user).subscribe((data) => {
       this._resp = JSON.stringify(data);
-      console.log(this._resp);
+      console.log(data);
       this._resp = JSON.parse(this._resp);
-      localStorage.setItem('user', JSON.stringify(user));
-      // alert(this._resp.status);
-      // console.log(typeof(this._resp));
-      // this.router.navigate(["/login"]);
-      return;
+      localStorage.setItem("user", JSON.stringify(user));
+      if (this._resp.status == "Success") this.router.navigate(["/login"]);
+      else alert(this._resp.status);
     });
-    console.log("thisssss:"+this._resp.status)
-    console.log("======"+this._resp.status == "Success")
+    console.log("thisssss:" + this._resp.status);
+    console.log("======" + this._resp.status == "Success");
     if (this._resp.status == "Success") return true;
-    console.log("WHHHYYY")
+    console.log("WHHHYYY");
     return false;
-
   }
 
   getAll() {

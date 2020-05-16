@@ -7,7 +7,7 @@
         </mat-form-field><br>
         <mat-form-field appearance="outline">
             <mat-label> Email </mat-label>
-            <input matInput placeholder="Johndoe@email.com" formControlName="email">
+            <input matInput placeholder="Johndoe@email.com" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
             <mat-error>Please Enter a valid email</mat-error>
         </mat-form-field><br>
         <mat-form-field appearance="outline">
