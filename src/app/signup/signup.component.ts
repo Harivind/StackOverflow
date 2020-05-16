@@ -1,39 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
 
+import { AccountService } from "../account.service";
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.scss"],
 })
+
+
 export class SignupComponent implements OnInit {
-  http: HttpClient;
-  constructor(private formbuilder:FormBuilder){
-    http: HttpClient;
-  }
-  ngOnInit(){
+  hide = true;
+  submitted: boolean;
+  user: FormGroup;
+  status : boolean;
+  constructor(
+    private formbuilder: FormBuilder,
+    private http: HttpClient,
+    private accServvice: AccountService
+  ) {}
+  ngOnInit() {
+    this.submitted=false;
     this.user = this.formbuilder.group({
-      firstName:['', Validators.required],
-      lastName:['', Validators.required],
-      email:['', Validators.required],
-      password:['', Validators.required],
-    })
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      username: ["", Validators.required],
+      email: ["", Validators.required],
+      password: ["",  Validators.minLength(8)],
+      profilePic: [""],
+    });
   }
 
-  signup(){
-    // if(this.user.invalid){
-    //   return;
-    // }
+  signup() {
     this.submitted = true;
-    this.http.post('/register',(JSON.stringify(this.user.value)));
+    this.status = this.accServvice.register(this.user.value);
+    console.log("signup status: "+this.status);
   }
-  submitted : boolean;
-  user:FormGroup;
-
-  get formData(){
+  get formData() {
     return this.user.controls;
   }
-
-
 }

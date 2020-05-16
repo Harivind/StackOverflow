@@ -13,13 +13,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import {MatIconModule} from '@angular/material/icon';
 
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    HttpClient,
-    HttpClientModule
- ],
+    HttpClientModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

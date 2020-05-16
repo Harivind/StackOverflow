@@ -2,60 +2,58 @@ import { Injectable } from "@angular/core";
 
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { environment } from '../environments/environment';
-
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { environment } from "../environments/environment";
 
 import { User } from "./shared/user";
-import { Question } from "./shared/question";
-import { Answer } from "./shared/answer";
 
 @Injectable({
   providedIn: "root",
 })
 export class AccountService {
-  private userSubject: BehaviorSubject<User>;
-  public user: Observable<User>;
-
+  public user: User;
+  _resp;
   constructor(private router: Router, private http: HttpClient) {
-    this.userSubject = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem("user"))
-    );
-    this.user = this.userSubject.asObservable();
+    //this.user.token= JSON.parse(localStorage.getItem("user"));
   }
 
   public get userValue(): User {
-    return this.userSubject.value;
+    return this.user;
   }
 
-  login(email, password) {
-    return this.http
-      .post<User>(`${environment.apiUrl}/authenticate`, {
-        email,
-        password,
-      })
-      .pipe(
-        map((user) => {
-          localStorage.setItem("user", JSON.stringify(user));
-          this.userSubject.next(user);
-          return user;
-        })
-      );
+  login(user: User) {
+    return this.http.post("/api/authenticate", this.user).subscribe((data) => {
+      localStorage.setItem("user", JSON.stringify(user));
+      alert(data);
+      this.router.navigate(["/"]);
+    });
   }
 
   logout() {
     localStorage.removeItem("user");
-    this.userSubject.next(null);
     this.router.navigate(["/login"]);
   }
 
   register(user: User) {
-    return this.http.post(`${environment.apiUrl}/register`, user);
+    this.http.post("http://localhost:3000/register", user).subscribe((data) => {
+      this._resp = JSON.stringify(data);
+      console.log(this._resp);
+      this._resp = JSON.parse(this._resp);
+      localStorage.setItem('user', JSON.stringify(user));
+      // alert(this._resp.status);
+      // console.log(typeof(this._resp));
+      // this.router.navigate(["/login"]);
+      return;
+    });
+    console.log("thisssss:"+this._resp.status)
+    console.log("======"+this._resp.status == "Success")
+    if (this._resp.status == "Success") return true;
+    console.log("WHHHYYY")
+    return false;
+
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    return this.http.get<User[]>("/api/users");
   }
 
   getById(id: string) {

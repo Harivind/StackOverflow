@@ -1,17 +1,25 @@
-<form [formGroup]='user' (ngSubmit)=signup()>
-    <label for="first_name">First Name</label><br>
-    <input type="text" name="firstname" placeholder="John " formControlName="firstName"><br>
-    <label for="last_name">Last Name</label><br>
-    <input type="text" name="lastname" placeholder="Doe" formControlName="lastName"><br>
-    <label for="last_name">Username</label><br>
-    <input type="text" name="username" placeholder="JohnDoe123" formControlName="userName"><br>
-    <label for="email">E-mail</label><br>
-    <input type="text" name="email" placeholder="johndoe@email.com" formControlName="email"><br>
-    <label for="password">Password</label><br>
-    <input type="password" name="password" placeholder="Password" formControlName="password"><br>
-    <button type="submit" mat-raised-button color="primary" onclick="">Register</button><br>
-</form>
-<mat-form-field appearance="outline">
-    <mat-label> First Name </mat-label>
-    <input matInput placeholder="John">
-</mat-form-field>
+<div class="signup" fxLayout="column" fxLayoutAlign="space-between center">
+    <h1>Please Fill in your details</h1>
+    <form [formGroup]='user' (ngSubmit)=signup()>
+        <mat-form-field appearance="outline">
+            <mat-label> Username </mat-label>
+            <input matInput placeholder="JohnDoe123" formControlName="username">
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label> Email </mat-label>
+            <input matInput placeholder="Johndoe@email.com" formControlName="email">
+            <mat-error>Please Enter a valid email</mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label> Enter password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+            <mat-error>Must contain minimum 8 characters</mat-error>
+        </mat-form-field><br>
+        <input type=file formControlName="profilePic" value="Profile picture" accept="image/*"><br><br>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!user.valid">Register</button><br>
+
+    </form>
+</div>
