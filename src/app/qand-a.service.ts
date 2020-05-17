@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
-import { AccountService } from "./account.service";
-import { environment } from "../environments/environment";
+import { from, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 import { Question } from "./shared/question";
 import { Answer } from "./shared/answer";
 
@@ -11,13 +12,14 @@ import { Answer } from "./shared/answer";
   providedIn: "root",
 })
 export class QandAService {
-  public question: Question;
+
+  public questions: Question[];
   public answer: Answer;
   _resp;
+
   constructor(
     private router: Router,
     private http: HttpClient,
-    accService: AccountService
   ) {}
 
   postQuestion(question: Question) {
@@ -38,13 +40,15 @@ export class QandAService {
   }
 
   searchQuestion(searchText:String){
-    console.log("Search text: "+searchText)
-    this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).subscribe(data => {
-      this._resp = data
-      alert(this._resp)
-      let { questions } = this._resp
-      alert(questions)
-  })
+    return this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).pipe(
+      map((questions: Question[]) => {
+        // alert(questions)
+        return questions;
+      }), catchError( error => {
+        return throwError( 'Something went wrong!' );
+      })
+   )
+
   }
 
 }

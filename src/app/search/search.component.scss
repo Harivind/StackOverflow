@@ -1,0 +1,27 @@
+.list {
+    padding: 10px;
+}
+
+#votes {
+    background-color: rgba(98, 168, 5, 0.486);
+    width: 60px;
+}
+
+#head {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.rectangle {
+    height: 8px;
+    border-radius: 10px;
+    background-color: #F48024;
+    width: 20%;
+    align-self: center;
+    display: flex;
+}
+
+#questions {
+    width: 70%;
+    text-align: start;
+}
