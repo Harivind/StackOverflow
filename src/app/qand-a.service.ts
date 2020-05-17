@@ -2,26 +2,28 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
-import { AccountService } from "./account.service";
-import { environment } from "../environments/environment";
+import { from, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 import { Question } from "./shared/question";
 import { Answer } from "./shared/answer";
-import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
-import { Post, PostAdapter } from "./shared/post"
+import { Post } from './shared/post';
+
+// import { Post, PostAdapter } from "./shared/post"
 
 @Injectable({
   providedIn: "root",
 })
 export class QandAService {
-  public question: Question;
+
+  public questions: Question[];
   public answer: Answer;
+  public post: Post;
   _resp;
+
   constructor(
     private router: Router,
     private http: HttpClient,
-    accService: AccountService,
-    private postAdapter: PostAdapter
   ) { }
 
   postQuestion(question: Question) {
@@ -42,15 +44,41 @@ export class QandAService {
   }
 
   searchQuestion(searchText: String) {
-    this.http.get("http://localhost:3000/findQuestions?queryString=" + searchText).subscribe(data => {
-      this._resp = JSON.stringify(data);
-      let { questions } = this._resp
-      alert(questions)
+    return this.http.get("http://localhost:3000/findQuestions?queryString=" + searchText).pipe(
+      map((questions: Question[]) => {
+        // alert(questions)
+        return questions;
+      }), catchError(error => {
+        return throwError('Something went wrong!');
+      })
+    )
+  }
+
+  getPost(questionID: String) {
+    return this.http.get("http://localhost:3000/getPost?questionID=" + questionID).pipe(
+      map((post: Post) => {
+        return post;
+      }), catchError(error => { return throwError("Something went wrong in post"); })
+    )
+  }
+
+  postAnswer(answer: any) {
+    this.http.post("http://localhost:3000/submitAnswer", answer, {
+      withCredentials: true
+    }).subscribe(data => {
+      this._resp = data;
+      if (this._resp.status == "Success") {
+        alert("Success!")
+        this.router.navigateByUrl("/post?questionID=" + answer.questionID)
+      }
+      else
+        alert("Failure")
     })
   }
 
-  getPost(questionID: String): Observable<Post> {
-    return this.http.get("http://localhost:3000/findQuestions?questionID=" + questionID).pipe(map((data: any) => this.postAdapter.adapt(data)))
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
   }
 
 }

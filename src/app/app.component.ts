@@ -4,7 +4,7 @@ import { FormControl } from "@angular/forms";
 import { AccountService } from "./account.service";
 import { DataSharingService } from './data-sharing.service';
 
-import { QandAService } from "./qand-a.service";
+import { Router } from '@angular/router';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,7 +18,7 @@ export class AppComponent {
   searchText: String;
   searchBar = new FormControl('');
 
-  constructor(private dataSharingService: DataSharingService, private accService: AccountService, private qaService: QandAService) {
+  constructor(private dataSharingService: DataSharingService, private accService: AccountService, private router: Router) {
     this.dataSharingService.isUserLoggedIn.subscribe(value => {
       this.isUserLoggedIn = value;
     });
@@ -30,7 +30,6 @@ export class AppComponent {
 
   search() {
     this.searchText = this.searchBar.value;
-    alert(this.searchText)
-    this.qaService.searchQuestion(this.searchText);
+    this.router.navigateByUrl("/search?q=" + this.searchText)
   }
 }

@@ -18,10 +18,9 @@
     </mat-menu>
 
     <a href="/"><img src="../assets/images/logo.png " height="30 "></a>
-    <input type="search " placeholder="Search " name="search " id="search-bar">
-    <button mat-icon-button (click)="search()" style="margin-right: 70px;">
-        <mat-icon>search</mat-icon>
-    </button>
+    <input type="search" [formControl]="searchBar" placeholder=" Search " id="search-bar">
+    <button mat-icon-button (click)="search()" style="margin-right: 70px;"><mat-icon>search</mat-icon></button>
+
     <div *ngIf=!isUserLoggedIn>
         <a href="/login "><img src="../assets/images/login.png " height="20 ">Log in</a>
         <a href="/signup "><img src="../assets/images/signup.png " height="20 ">Sign up</a>
@@ -59,3 +58,27 @@
         </mat-card-header>
     </mat-card>
 </div>
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title style="font-weight: 900;">
+                <div mat-card-avatar style="background-image: url(../assets/images/Hari.JPG);background-size: cover; margin-right: 20px;"></div>
+                Harivind Premkumar
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+            1MS17CS034
+        </mat-list>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div mat-card-avatar style="background-image: url(../assets/images/pranav.jpg);background-size: cover;"></div>
+                Pranav Hegde
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+            1MS17CS082
+        </mat-list>
+    </mat-expansion-panel>
+</mat-accordion> -->

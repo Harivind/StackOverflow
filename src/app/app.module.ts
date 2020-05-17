@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +25,7 @@ import { SignupComponent } from './signup/signup.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { PostComponent } from './post/post.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -33,7 +37,8 @@ import { PostComponent } from './post/post.component';
     SignupComponent,
     PagenotfoundComponent,
     AskQuestionComponent,
-    PostComponent
+    PostComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import { PostComponent } from './post/post.component';
     MatFormFieldModule,
     HttpClientModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule,
+    MatExpansionModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
