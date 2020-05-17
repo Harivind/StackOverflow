@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { QandAService } from '../qand-a.service';
 import { Post } from '../shared/post'
 import { FormControl, FormGroup, FormBuilder, Validators, } from "@angular/forms";
-import { threadId } from 'worker_threads';
+// import { threadId } from 'worker_threads';
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 
 
