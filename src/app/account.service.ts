@@ -44,11 +44,6 @@ export class AccountService {
     this.router.navigate(["/"]);
   }
 
-  isLogedin() {
-    if (localStorage.getItem("user")) return true;
-    return false;
-  }
-
   register(user: User) {
     this.http.post("http://localhost:3000/register", user).subscribe((data) => {
       this._resp = JSON.stringify(data);
@@ -58,10 +53,7 @@ export class AccountService {
       if (this._resp.status == "Success") this.router.navigate(["/login"]);
       else alert(this._resp.status);
     });
-    console.log("thisssss:" + this._resp.status);
-    console.log("======" + this._resp.status == "Success");
     if (this._resp.status == "Success") return true;
-    console.log("WHHHYYY");
     return false;
   }
 
