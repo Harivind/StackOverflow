@@ -11,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -22,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     HomeComponent,
     SignupComponent,
     PagenotfoundComponent,
-    AskQuestionComponent
+    AskQuestionComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

@@ -18,14 +18,15 @@
     </mat-menu>
 
     <a href="/"><img src="../assets/images/logo.png " height="30 "></a>
-    <input type="search " placeholder="Search " name="search " id="search-bar">
+    <input type="search" [formControl]="searchBar" placeholder=" Search " id="search-bar">
+    <button mat-icon-button (click)="search()" style="margin-right: 70px;"><mat-icon>search</mat-icon></button>
     <div *ngIf=!logedin>
         <a href="/login "><img src="../assets/images/login.png " height="20 ">Log in</a>
         <a href="/signup "><img src="../assets/images/signup.png " height="20 ">Sign up</a>
     </div>
     <div *ngIf=logedin>
-        <a href="/profile">Profile<mat-icon>{{'face'}}</mat-icon></a>
-        <a href="/logout ">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
+        <a href="/profile">Profile<mat-icon>face</mat-icon></a>
+        <a href="/logout ">Log Out<mat-icon>power_settings_new</mat-icon></a>
         <mat-menu>
             <button mat-menu-item>Settings</button>
             <button mat-menu-item>Help</button>

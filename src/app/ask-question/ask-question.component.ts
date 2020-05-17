@@ -28,7 +28,6 @@ export class AskQuestionComponent implements OnInit {
     this.submitted = true;
     this.status = this.qaService.postQuestion(this.question.value);
     console.log("Question status: "+this.status);
-
   }
 
   get formData() {

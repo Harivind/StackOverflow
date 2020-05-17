@@ -1,12 +1,12 @@
-<div class="signup" fxLayout="column" fxLayoutAlign="space-between center">
+<div class="askQ" fxLayout="column" fxLayoutAlign="space-between center">
     <h1>Ask Your Question</h1>
-    <form [formGroup]='question' (ngSubmit)=postQuestion()>
+    <form [formGroup]='question' (ngSubmit)=postQuestion() class=form>
         <mat-form-field appearance="legacy">
             <mat-label> Enter a Suitable Title </mat-label>
             <input matInput formControlName="heading" style="width: 80%;">
             <mat-error>Empty title</mat-error>
         </mat-form-field><br>
-        <mat-form-field appearance="outline">
+        <mat-form-field>
             <mat-label>Describe the Question </mat-label>
             <textarea matInput formControlName="description"></textarea>
             <mat-error>Empty Description</mat-error>
