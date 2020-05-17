@@ -26,6 +26,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { PostComponent } from './post/post.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -38,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     PagenotfoundComponent,
     AskQuestionComponent,
     PostComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

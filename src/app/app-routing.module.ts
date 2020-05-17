@@ -8,6 +8,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { PostComponent } from './post/post.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'askQuestion', component: AskQuestionComponent},
   { path: 'post', component: PostComponent},
   { path: 'search', component: SearchComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: '**', component: PagenotfoundComponent },
 ];
 

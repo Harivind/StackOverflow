@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 
 import { QandAService } from "../qand-a.service";
 import { Question } from '../shared/question';
-import { element } from 'protractor';
 
 @Component({
   selector: "app-search",
@@ -22,10 +21,11 @@ export class SearchComponent implements OnInit {
     };
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
       }
     });
+
+
     var a=route.queryParams;
     this.searchString=a['_value'].q;
     this.qaService.searchQuestion(this.searchString).subscribe((data:any) => {

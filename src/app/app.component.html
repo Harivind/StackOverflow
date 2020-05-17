@@ -1,6 +1,6 @@
 <mat-toolbar id="toolbar" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button [matMenuTriggerFor]="menu" style="padding-right: 50px;">
-        <mat-icon>more_vert</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: 75px;">
+        <mat-icon> more_horiz</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <a href="/"><button mat-menu-item>
@@ -28,10 +28,6 @@
     <div *ngIf=isUserLoggedIn>
         <a href="/profile">Profile<mat-icon>{{'face'}}</mat-icon></a>
         <a (click)="logout()">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
-        <mat-menu>
-            <button mat-menu-item>Settings</button>
-            <button mat-menu-item>Help</button>
-        </mat-menu>
     </div>
 </mat-toolbar>
 <router-outlet></router-outlet>
