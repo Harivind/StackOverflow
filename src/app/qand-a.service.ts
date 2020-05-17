@@ -36,4 +36,11 @@ export class QandAService {
       });
     return false;
   }
+
+  searchQuestion(searchText:String){
+    this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).subscribe(data => {
+      alert(data)
+  })
+  }
+
 }

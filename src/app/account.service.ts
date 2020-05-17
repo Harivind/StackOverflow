@@ -41,7 +41,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem("user");
     this.dataSharingService.isUserLoggedIn.next(false);
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/"]);
   }
 
   isLogedin() {
