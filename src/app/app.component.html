@@ -1,31 +1,31 @@
 <mat-toolbar id="toolbar" fxLayout="row" fxLayoutAlign="center center">
     <button mat-icon-button [matMenuTriggerFor]="menu" style="padding-right: 50px;">
-    <mat-icon>more_vert</mat-icon>
+        <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <a href="/"><button mat-menu-item>
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button></a>
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </button></a>
         <button mat-menu-item>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
-    </button>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+        </button>
         <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+        </button>
     </mat-menu>
 
     <a href="/"><img src="../assets/images/logo.png " height="30 "></a>
     <input type="search " placeholder="Search " name="search " id="search-bar">
-    <div *ngIf=!logedin>
+    <div *ngIf=!isUserLoggedIn>
         <a href="/login "><img src="../assets/images/login.png " height="20 ">Log in</a>
         <a href="/signup "><img src="../assets/images/signup.png " height="20 ">Sign up</a>
     </div>
-    <div *ngIf=logedin>
+    <div *ngIf=isUserLoggedIn>
         <a href="/profile">Profile<mat-icon>{{'face'}}</mat-icon></a>
-        <a href="/logout ">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
+        <a (click)="logout()">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
         <mat-menu>
             <button mat-menu-item>Settings</button>
             <button mat-menu-item>Help</button>
@@ -47,7 +47,8 @@
     </mat-card>
     <mat-card>
         <mat-card-header>
-            <div mat-card-avatar style="background-image: url(../assets/images/pranav.jpg);background-size: cover;"></div>
+            <div mat-card-avatar style="background-image: url(../assets/images/pranav.jpg);background-size: cover;">
+            </div>
             <mat-card-title>
                 <h3 style="color:black; ">Pranav Hegde</h3>
             </mat-card-title>

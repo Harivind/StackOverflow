@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormControl, FormGroup, FormBuilder, Validators,} from "@angular/forms";
+import { FormControl, FormGroup, FormBuilder, Validators, } from "@angular/forms";
 
 import { AccountService } from "../account.service";
 
@@ -14,19 +14,19 @@ export class SignupComponent implements OnInit {
   hide = true;
   submitted: boolean;
   user: FormGroup;
-  status : boolean;
+  status: boolean;
   constructor(
     private formbuilder: FormBuilder,
     private accService: AccountService
-  ) {}
+  ) { }
   ngOnInit() {
-    this.submitted=false;
+    this.submitted = false;
     this.user = this.formbuilder.group({
       // firstName: ["", Validators.required],
       // lastName: ["", Validators.required],
       username: ["", Validators.required],
       email: ["", Validators.required],
-      password: ["",  Validators.minLength(8)],
+      password: ["", Validators.minLength(8)],
       profilePic: [""],
     });
   }
@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   signup() {
     this.submitted = true;
     this.status = this.accService.register(this.user.value);
-    console.log("signup status: "+this.status);
+    console.log("signup status: " + this.status);
   }
   get formData() {
     return this.user.controls;
