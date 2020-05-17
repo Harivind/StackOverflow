@@ -1,9 +1,10 @@
-export class Answer{
-    _id : number;
-    questionID : number;
-    user: string;
-    description : string;
-    images : string[];
-    upvotes:number;
-    downvotes:number;
+export class Answer {
+    constructor(
+        public _id: number,
+        public questionID: number,
+        public user: string,
+        public description: string,
+        public images: string[],
+        public upvotes: number,
+        public downvotes: number) { }
 }

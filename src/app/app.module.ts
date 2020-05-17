@@ -24,6 +24,7 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { PostComponent } from './post/post.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

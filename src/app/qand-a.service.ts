@@ -6,6 +6,9 @@ import { AccountService } from "./account.service";
 import { environment } from "../environments/environment";
 import { Question } from "./shared/question";
 import { Answer } from "./shared/answer";
+import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
+import { Post, PostAdapter } from "./shared/post"
 
 @Injectable({
   providedIn: "root",
@@ -17,8 +20,9 @@ export class QandAService {
   constructor(
     private router: Router,
     private http: HttpClient,
-    accService: AccountService
-  ) {}
+    accService: AccountService,
+    private postAdapter: PostAdapter
+  ) { }
 
   postQuestion(question: Question) {
     this.http
@@ -37,12 +41,16 @@ export class QandAService {
     return false;
   }
 
-  searchQuestion(searchText:String){
-    this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).subscribe(data => {
+  searchQuestion(searchText: String) {
+    this.http.get("http://localhost:3000/findQuestions?queryString=" + searchText).subscribe(data => {
       this._resp = JSON.stringify(data);
       let { questions } = this._resp
       alert(questions)
-  })
+    })
+  }
+
+  getPost(questionID: String): Observable<Post> {
+    return this.http.get("http://localhost:3000/findQuestions?questionID=" + questionID).pipe(map((data: any) => this.postAdapter.adapt(data)))
   }
 
 }
