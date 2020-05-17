@@ -42,7 +42,6 @@ export class QandAService {
   searchQuestion(searchText:String){
     return this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).pipe(
       map((questions: Question[]) => {
-        // alert(questions)
         return questions;
       }), catchError( error => {
         return throwError( 'Something went wrong!' );
