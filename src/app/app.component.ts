@@ -30,7 +30,6 @@ export class AppComponent {
 
   search() {
     this.searchText = this.searchBar.value;
-    alert(this.searchText)
     this.qaService.searchQuestion(this.searchText);
   }
 }

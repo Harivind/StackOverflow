@@ -38,8 +38,10 @@ export class QandAService {
   }
 
   searchQuestion(searchText:String){
+    console.log("Search text: "+searchText)
     this.http.get("http://localhost:3000/findQuestions?queryString="+searchText ).subscribe(data => {
-      this._resp = JSON.stringify(data);
+      this._resp = data
+      alert(this._resp)
       let { questions } = this._resp
       alert(questions)
   })
