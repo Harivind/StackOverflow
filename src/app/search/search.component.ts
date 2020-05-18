@@ -31,7 +31,6 @@ export class SearchComponent implements OnInit {
     this.qaService.searchQuestion(this.searchString).subscribe((data:any) => {
       this.questions = data.questions;
       this.noresults=this.questions.length==0?true:false
-
     });
   }
 

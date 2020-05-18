@@ -47,6 +47,7 @@ export class AskQuestionComponent implements OnInit {
     this.question.value.user=user
     this.question.value.images=this.base64textString
     this.qaService.postQuestion(this.question.value);
+
   }
 
   get formData() {

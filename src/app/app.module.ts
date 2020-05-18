@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -58,7 +59,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatMenuModule,
     MatListModule,
     MatExpansionModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

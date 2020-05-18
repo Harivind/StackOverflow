@@ -61,7 +61,6 @@ export class PostComponent implements OnInit {
       description: ["", Validators.required]
     });
     this.qAndA.getPost(this.questionID).subscribe(data => this.post = data)
-    console.log(this.questionID)
   }
 
   postAnswer() {

@@ -5,6 +5,7 @@ import { AccountService } from "./account.service";
 import { DataSharingService } from './data-sharing.service';
 
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,7 +19,7 @@ export class AppComponent {
   searchText: String;
   searchBar = new FormControl('');
 
-  constructor(private dataSharingService: DataSharingService, private accService: AccountService, private router: Router) {
+  constructor(private _snackBar: MatSnackBar,private dataSharingService: DataSharingService, private accService: AccountService, private router: Router) {
     this.dataSharingService.isUserLoggedIn.subscribe(value => {
       this.isUserLoggedIn = value;
     });
@@ -26,6 +27,9 @@ export class AppComponent {
 
   logout() {
     this.accService.logout()
+      this._snackBar.open("Logged Out!", "close", {
+        duration: 2000,
+      });
   }
 
   search() {
