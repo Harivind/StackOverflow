@@ -50,7 +50,9 @@
             </button>
         </mat-card-actions>
         <mat-card-actions *ngIf="currentUser==post.question.user">
-            <button mat-button (click)=deleteQuestion(post.question)>Delete Question</button>
+            <button mat-icon-button (click)=deleteQuestion(post.question)>
+                <mat-icon>delete</mat-icon>Delete
+            </button>
         </mat-card-actions>
     </mat-card>
     <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 32px; color: black;">
@@ -105,7 +107,9 @@
 
             </mat-card-actions>
             <mat-card-actions *ngIf="currentUser==answer.user">
-                <button mat-button (click)=deleteAnswer(answer)>Delete Answer</button>
+                <button mat-icon-button (click)=deleteAnswer(answer)>
+                    <mat-icon>delete</mat-icon>Delete
+                </button>
             </mat-card-actions>
         </mat-card>
     </div>
