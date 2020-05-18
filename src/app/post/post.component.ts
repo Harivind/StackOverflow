@@ -22,6 +22,10 @@ export class PostComponent implements OnInit {
   mySubscription: any;
   public currentUser: String;
   public user: User;
+  public upvotedQues: boolean;
+  public upvotedAns: boolean[];
+  public downvotedQues: boolean;
+  public downvotedAns: boolean[];
 
   constructor(private qAndA: QandAService, private route: ActivatedRoute, private formbuilder: FormBuilder, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -36,7 +40,20 @@ export class PostComponent implements OnInit {
       }
     });
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.currentUser = this.user.username;
+    if (this.user)
+      this.currentUser = this.user.username;
+    else
+      this.currentUser = null
+    console.log("current " + this.currentUser)
+    this.qAndA.getPost(this.questionID).subscribe(data => {
+      this.post = data
+      console.log(data.question)
+      this.upvotedQues = (data.question.upvotes.indexOf(this.currentUser) > -1)
+      this.downvotedQues = (data.question.downvotes.indexOf(this.currentUser) > -1)
+      this.upvotedAns = data.answers.map(a => a.upvotes.indexOf(this.currentUser) > -1)
+      this.downvotedAns = data.answers.map(a => a.downvotes.indexOf(this.currentUser) > -1)
+    })
+    console.log(this.upvotedAns + " " + this.downvotedQues)
   }
   base64textString = [];
 
@@ -60,7 +77,7 @@ export class PostComponent implements OnInit {
     this.answer = this.formbuilder.group({
       description: ["", Validators.required]
     });
-    this.qAndA.getPost(this.questionID).subscribe(data => this.post = data)
+
     console.log(this.questionID)
   }
 
@@ -73,6 +90,7 @@ export class PostComponent implements OnInit {
       description: this.answer.value.description,
       images: this.base64textString
     }
+    console.log(answer)
     this.qAndA.postAnswer(answer)
   }
 
@@ -86,5 +104,43 @@ export class PostComponent implements OnInit {
 
   deleteQuestion(question: any) {
     this.qAndA.deleteQuestion(question)
+  }
+
+  upvote(type: String, _id: String, i: number) {
+    if (type == 'Question') {
+      if (!this.upvotedQues)
+        this.qAndA.upvote(type, _id, this.currentUser).subscribe(data => {
+          this.post.question = data;
+          this.downvotedQues = false
+          this.upvotedQues = true
+        })
+    }
+    else {
+      if (!this.upvotedAns[i])
+        this.qAndA.upvote(type, _id, this.currentUser).subscribe(data => {
+          this.post.answers[i] = data
+          this.upvotedAns[i] = true
+          this.downvotedAns[i] = false
+        })
+    }
+  }
+
+  downvote(type: String, _id: String, i: number) {
+    if (type == 'Question') {
+      if (!this.downvotedQues)
+        this.qAndA.downvote(type, _id, this.currentUser).subscribe(data => {
+          this.post.question = data
+          this.downvotedQues = true
+          this.upvotedQues = false
+        })
+    }
+    else {
+      if (!this.downvotedAns[i])
+        this.qAndA.downvote(type, _id, this.currentUser).subscribe(data => {
+          this.post.answers[i] = data
+          this.upvotedAns[i] = false
+          this.downvotedAns[i] = true
+        })
+    }
   }
 }

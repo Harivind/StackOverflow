@@ -27,6 +27,7 @@ export class QandAService {
   ) { }
 
   postQuestion(question: Question) {
+    console.log(question);
     this.http
       .post("http://localhost:3000/submitQuestion", question)
       .subscribe((data) => {
@@ -51,7 +52,7 @@ export class QandAService {
   }
 
   getUserQuestions(username: String) {
-    return this.http.get("http://localhost:3000/getUserQuestions?username="+username).pipe(
+    return this.http.get("http://localhost:3000/getUserQuestions?username=" + username).pipe(
       map((questions: Question[][]) => {
         return questions;
       }), catchError(error => {
@@ -106,6 +107,14 @@ export class QandAService {
       else
         alert("Delete Failure")
     })
+  }
+
+  upvote(type: String, _id: String, username: String): Observable<any> {
+    return this.http.post("http://localhost:3000/upvote", { type: type, _id: _id, username: username }, { withCredentials: true })
+  }
+
+  downvote(type: String, _id: String, username: String): Observable<any> {
+    return this.http.post("http://localhost:3000/downvote", { type: type, _id: _id, username: username }, { withCredentials: true })
   }
 
 }

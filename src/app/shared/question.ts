@@ -5,6 +5,6 @@ export class Question {
     description: String;
     images: String[];
     keywords: String[];
-    upvotes: number;
-    downvotes: number;
+    upvotes: String[];
+    downvotes: String[];
 }
