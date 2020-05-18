@@ -43,10 +43,10 @@ export class AccountService {
 
   logout() {
     this.http.delete("http://localhost:3000/logout").subscribe((data) => {
-      localStorage.removeItem("user");
-      this.dataSharingService.isUserLoggedIn.next(false);
-      this.router.navigate(["/"]);
     });
+    localStorage.removeItem("user");
+    this.dataSharingService.isUserLoggedIn.next(false);
+    this.router.navigate(["/"]);
   }
 
   register(user: User) {
