@@ -3,16 +3,18 @@
     <div class="rectangle"></div>
     <div id="questions" *ngIf="!noresults">
         <mat-list>
-            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">Questions</div>
+            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">
+                Questions</div>
             <mat-list-item *ngFor="let question of questions">
 
                 <div class="list">
                     <div mat-line><span class="material-icons">
-                      question_answer
-                      </span><a href="/post?questionID={{question._id}}">{{question.heading}}</a></div>
+                            question_answer
+                        </span><a href="/post?questionID={{question._id}}">{{question.heading}}</a></div>
                     <div mat-line class="description"> {{question.description}} </div>
                     <br>
-                    <button mat-flat-button id="votes" matBadge={{question.upvotes-question.downvotes}} matBadgeColor="primary">Votes</button>
+                    <button mat-flat-button id="votes" matBadge={{question.upvotes.length-question.downvotes.length}}
+                        matBadgeColor="primary">Votes</button>
                     <div mat-line></div>
                     <div mat-line></div>
                     <mat-divider></mat-divider>
@@ -22,7 +24,8 @@
     </div>
     <div id="questions" *ngIf="noresults">
         <mat-list>
-            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">No Results found for the Query</div>
+            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">
+                No Results found for the Query</div>
         </mat-list>
     </div>
 </div>

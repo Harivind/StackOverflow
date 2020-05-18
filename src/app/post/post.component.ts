@@ -111,7 +111,8 @@ export class PostComponent implements OnInit {
     if (type == 'Question') {
       if (!this.upvotedQues)
         this.qAndA.upvote(type, _id, this.currentUser).subscribe(data => {
-          this.post.question = data;
+          let { profilePic } = this.post.question
+          this.post.question = { ...data, profilePic: profilePic };
           this.downvotedQues = false
           this.upvotedQues = true
         })
@@ -119,7 +120,8 @@ export class PostComponent implements OnInit {
     else {
       if (!this.upvotedAns[i])
         this.qAndA.upvote(type, _id, this.currentUser).subscribe(data => {
-          this.post.answers[i] = data
+          let { profilePic } = this.post.answers[i]
+          this.post.answers[i] = { ...data, profilePic: profilePic }
           this.upvotedAns[i] = true
           this.downvotedAns[i] = false
         })
@@ -130,7 +132,8 @@ export class PostComponent implements OnInit {
     if (type == 'Question') {
       if (!this.downvotedQues)
         this.qAndA.downvote(type, _id, this.currentUser).subscribe(data => {
-          this.post.question = data
+          let { profilePic } = this.post.question
+          this.post.question = { ...data, profilePic: profilePic };
           this.downvotedQues = true
           this.upvotedQues = false
         })
@@ -138,7 +141,8 @@ export class PostComponent implements OnInit {
     else {
       if (!this.downvotedAns[i])
         this.qAndA.downvote(type, _id, this.currentUser).subscribe(data => {
-          this.post.answers[i] = data
+          let { profilePic } = this.post.answers[i]
+          this.post.answers[i] = { ...data, profilePic: profilePic }
           this.upvotedAns[i] = false
           this.downvotedAns[i] = true
         })
