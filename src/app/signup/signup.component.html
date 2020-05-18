@@ -23,6 +23,7 @@
           </button>
             <mat-error>Must contain minimum 8 characters</mat-error>
         </mat-form-field><br>
+        <label style="font-weight: 900;">Select a profile picture</label><br>
         <input type=file formControlName="profilePic" accept="image/*" (change)="onUploadChange($event)"><br><br>
         <img height="200px" src={{base64textString}} alt="" id="img"><br>
         <button type="submit" mat-raised-button color="primary" [disabled]="!user.valid">Register</button><br>
