@@ -3,7 +3,6 @@
         <mat-card-header>
             <img *ngIf="post.question.profilePic" mat-card-avatar class="post-header-image" src={{post.question.profilePic}} alt="">
             <img *ngIf="!post.question.profilePic" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
-
             <mat-card-title>{{post.question.heading}}</mat-card-title>
             <mat-card-subtitle>{{post.question.user}}</mat-card-subtitle>
         </mat-card-header>
@@ -13,11 +12,13 @@
                 <div mat-line> {{post.question.description}} </div>
                 <br>
                 <button mat-icon-button id="votes" matBadge={{post.question.upvotes.length-post.question.downvotes.length}} matBadgeColor="primary">Votes</button>
+
                 <div mat-line></div>
                 <div mat-line></div>
                 <mat-divider></mat-divider>
             </div>
         </mat-card-content>
+
         <mat-card-actions *ngIf="currentUser!=post.question.user && upvotedQues">
             <button mat-icon-button style="color: forestgreen;background-color: rgb(155, 218, 155);" (click)="upvote('Question',post.question._id,0)">
                 <mat-icon>arrow_drop_up</mat-icon>
@@ -43,21 +44,19 @@
             </button>
         </mat-card-actions>
         <mat-card-actions *ngIf="currentUser==post.question.user">
-            <button mat-icon-button (click)=deleteQuestion(post.question)>
-                <mat-icon>delete</mat-icon>
-                Delete
-            </button>
+            <button mat-button (click)=deleteQuestion(post.question)>Delete Question</button>
         </mat-card-actions>
     </mat-card>
     <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 32px; color: black;">
         Answers
     </div>
 
-    <div *ngFor="let answer of post.answers;index as i">
+    <div *ngFor="let answer of post.answers">
         <mat-card class="post-card">
             <mat-card-header>
                 <img *ngIf="answer.profilePic" mat-card-avatar class="post-header-image" src={{answer.profilePic}} alt="">
                 <img *ngIf="!answer.profilePic" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
+
                 <mat-card-subtitle>{{answer.user}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -65,6 +64,7 @@
                     <div mat-line> {{answer.description}} </div>
                     <br>
                     <button mat-icon-button id="votes" matBadge={{answer.upvotes.length-answer.downvotes.length}} matBadgeColor="primary">Votes</button>
+
                     <div mat-line></div>
                     <div mat-line></div>
                     <mat-divider></mat-divider>
@@ -93,12 +93,10 @@
                 <button mat-icon-button (click)="downvote('Answer',answer._id,i)">
                     <mat-icon>arrow_drop_down</mat-icon>
                 </button>
+
             </mat-card-actions>
             <mat-card-actions *ngIf="currentUser==answer.user">
-                <button mat-icon-button (click)=deleteAnswer(answer)>
-                    <mat-icon>delete</mat-icon>
-                    Delete
-                </button>
+                <button mat-button (click)=deleteAnswer(answer)>Delete Answer</button>
             </mat-card-actions>
         </mat-card>
     </div>
