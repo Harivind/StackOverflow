@@ -51,7 +51,7 @@
         Answers
     </div>
 
-    <div *ngFor="let answer of post.answers">
+    <div *ngFor="let answer of post.answers;index as i">
         <mat-card class="post-card">
             <mat-card-header>
                 <img *ngIf="answer.profilePic" mat-card-avatar class="post-header-image" src={{answer.profilePic}} alt="">
