@@ -8,6 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Question } from "./shared/question";
 import { Answer } from "./shared/answer";
 import { Post } from './shared/post';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // import { Post, PostAdapter } from "./shared/post"
 
@@ -22,9 +23,19 @@ export class QandAService {
   _resp;
 
   constructor(
+
+    private _snackBar: MatSnackBar,
     private router: Router,
     private http: HttpClient,
   ) { }
+
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "close", {
+      duration: 2000,
+    });
+  }
+
 
   postQuestion(question: Question) {
     console.log(question);
@@ -33,7 +44,7 @@ export class QandAService {
       .subscribe((data) => {
         this._resp = data;
         if (this._resp.status == "Success") {
-          alert("Success!");
+          this.openSnackBar("Question Posted")
           this.router.navigateByUrl("/post?questionID=" + this._resp.questionID)
         }
         else
@@ -64,6 +75,9 @@ export class QandAService {
   getPost(questionID: String) {
     return this.http.get("http://localhost:3000/getPost?questionID=" + questionID).pipe(
       map((post: Post) => {
+        for ( let i in post.answers){
+          i
+        }
         return post;
       }), catchError(error => { return throwError("Something went wrong in post"); })
     )
@@ -76,9 +90,11 @@ export class QandAService {
       this._resp = data;
       if (this._resp.status == "Success") {
         this.router.navigateByUrl("/post?questionID=" + answer.questionID)
+        this.openSnackBar("Answer Posted")
       }
       else
-        alert("Failure")
+      this.openSnackBar("Failed to post answer")
+
     })
   }
 
@@ -90,7 +106,7 @@ export class QandAService {
   deleteAnswer(answer: any) {
     this.http.delete("http://localhost:3000/deleteAnswer/" + answer._id).subscribe((data: any) => {
       if (data.status == 'Success') {
-        alert("Succesfully Deleted")
+        this.openSnackBar("Succesfully Deleted")
         this.router.navigateByUrl("/post?questionID=" + answer.questionID)
       }
       else
@@ -101,7 +117,7 @@ export class QandAService {
   deleteQuestion(question: any) {
     this.http.delete("http://localhost:3000/deleteQuestion/" + question._id).subscribe((data: any) => {
       if (data.status == 'Success') {
-        alert("Succesfully Deleted")
+        this.openSnackBar("Succesfully Deleted")
         this.router.navigateByUrl("/")
       }
       else

@@ -52,8 +52,9 @@ export class PostComponent implements OnInit {
       this.downvotedQues = (data.question.downvotes.indexOf(this.currentUser) > -1)
       this.upvotedAns = data.answers.map(a => a.upvotes.indexOf(this.currentUser) > -1)
       this.downvotedAns = data.answers.map(a => a.downvotes.indexOf(this.currentUser) > -1)
+      console.log("profile " + this.post.question.profilePic)
     })
-    console.log(this.upvotedAns + " " + this.downvotedQues)
+    // console.log(this.post.question.profilePic)
   }
   base64textString = [];
 

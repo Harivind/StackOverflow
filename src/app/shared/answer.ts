@@ -6,4 +6,5 @@ export class Answer {
     images: String[];
     upvotes: String[];
     downvotes: String[];
+    profilePic: String
 }

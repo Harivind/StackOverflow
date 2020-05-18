@@ -7,4 +7,5 @@ export class Question {
     keywords: String[];
     upvotes: String[];
     downvotes: String[];
+    profilePic: String
 }
