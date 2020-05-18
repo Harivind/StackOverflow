@@ -45,8 +45,8 @@
                 </div>
             </mat-card-content>
             <mat-card-actions *ngIf="currentUser!=answer.user">
-                <button mat-icon-button><mat-icon>arrow_upward</mat-icon></button>
-                <button mat-icon-button><mat-icon>arrow_downward</mat-icon></button>
+                <button mat-icon-button><mat-icon>expand_less</mat-icon></button>
+                <button mat-icon-button><mat-icon>expand_more</mat-icon></button>
             </mat-card-actions>
             <mat-card-actions *ngIf="currentUser==answer.user">
                 <button mat-button (click)=deleteAnswer(answer)>Delete Answer</button>
