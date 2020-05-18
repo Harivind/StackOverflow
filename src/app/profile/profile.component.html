@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="space-between center" id="profile">
     <div id="details" fxLayout="row" fxLayoutAlign="start center">
-        <img *ngIf="user.profilePic.length!=0" src={{user.profilePic}} class="DP">
-        <img *ngIf="user.profilePic.length==0" src='../../assets/images/noDisplay.png' class="DP">
+        <img *ngIf="user.profilePic" src={{user.profilePic}} class="DP">
+        <img *ngIf="!user.profilePic" src='../../assets/images/noDisplay.png' class="DP">
         <div fxLayout="column" fxLayoutAlign="space-between start" id="user">
             <h1 style="font-weight: 900;font-size:30px;">{{user.username}}</h1>
             <h2>{{user.email}}</h2>

@@ -1,8 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="space-between center">
     <mat-card class="post-card">
         <mat-card-header>
-            <img *ngIf="post.question.profilePic.length>0" mat-card-avatar class="post-header-image" src={{post.question.profilePic}} alt="">
-            <img *ngIf="post.question.profilePic.length==0" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
+            <img *ngIf="post.question.profilePic" mat-card-avatar class="post-header-image" src={{post.question.profilePic}} alt="">
+            <img *ngIf="!post.question.profilePic" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
 
             <mat-card-title>{{post.question.heading}}</mat-card-title>
             <mat-card-subtitle>{{post.question.user}}</mat-card-subtitle>
@@ -56,8 +56,8 @@
     <div *ngFor="let answer of post.answers;index as i">
         <mat-card class="post-card">
             <mat-card-header>
-                <img *ngIf="answer.profilePic.length>0" mat-card-avatar class="post-header-image" src={{answer.profilePic}} alt="">
-                <img *ngIf="answer.profilePic.length==0" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
+                <img *ngIf="answer.profilePic" mat-card-avatar class="post-header-image" src={{answer.profilePic}} alt="">
+                <img *ngIf="!answer.profilePic" mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
                 <mat-card-subtitle>{{answer.user}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
