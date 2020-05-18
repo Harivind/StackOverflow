@@ -18,9 +18,12 @@
                 <mat-divider></mat-divider>
             </div>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf="currentUser!=post.question.user">
             <button mat-button>Upvote</button>
             <button mat-button>Downvote</button>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="currentUser==post.question.user">
+            <button mat-button (click)=deleteQuestion(post.question)>Delete Answer</button>
         </mat-card-actions>
     </mat-card>
     <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 18px; color: black;">
@@ -45,9 +48,12 @@
                     <mat-divider></mat-divider>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions *ngIf="currentUser!=answer.user">
                 <button mat-button>Upvote</button>
                 <button mat-button>Downvote</button>
+            </mat-card-actions>
+            <mat-card-actions *ngIf="currentUser==answer.user">
+                <button mat-button (click)=deleteAnswer(answer)>Delete Answer</button>
             </mat-card-actions>
         </mat-card>
     </div>

@@ -19,6 +19,7 @@ export class PostComponent implements OnInit {
   submitted: boolean;
   answer: FormGroup
   mySubscription: any;
+  public currentUser: String;
 
   constructor(private qAndA: QandAService, private route: ActivatedRoute, private formbuilder: FormBuilder, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -33,6 +34,7 @@ export class PostComponent implements OnInit {
         this.router.navigated = false;
       }
     });
+    this.currentUser = JSON.parse(localStorage.getItem('user')).username;
   }
 
   ngOnInit(): void {
@@ -60,4 +62,11 @@ export class PostComponent implements OnInit {
     return this.answer.controls;
   }
 
+  deleteAnswer(answer: any) {
+    this.qAndA.deleteAnswer(answer)
+  }
+
+  deleteQuestion(question: any) {
+    this.qAndA.deleteQuestion(question)
+  }
 }
