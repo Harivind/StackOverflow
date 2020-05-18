@@ -1,6 +1,6 @@
-<div class="askQ" fxLayout="column" fxLayoutAlign="space-between center">
-    <h1>Ask Your Question</h1>
+<div class="askQ" fxLayout="column" fxLayoutAlign="center center">
     <form [formGroup]='question' (ngSubmit)=postQuestion() class=form>
+        <h1 style="font-weight: 900;font-size: 25px;text-align: center;">Ask Your Question</h1>
         <mat-form-field appearance="legacy">
             <mat-label> Enter a Suitable Title </mat-label>
             <input matInput formControlName="heading" style="width: 80%;">
@@ -11,7 +11,8 @@
             <textarea matInput formControlName="description"></textarea>
             <mat-error>Empty Description</mat-error>
         </mat-form-field><br>
-        <input type="file" multiple accept="image/*"><br><br>
+        <input type="file" multiple (change)="onUploadChange($event)" accept="image/*"><br><br>
+        <img height="250" *ngFor="let item of base64textString" src={{item}} alt="" id="img"><br>
         <button type="submit" mat-raised-button color="primary" [disabled]="!question.valid">Post Question</button><br>
     </form>
 </div>

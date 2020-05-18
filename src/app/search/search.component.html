@@ -1,8 +1,7 @@
-<div class="search" fxLayout="column" fxLayoutAlign="space-between center">
+<div class="search" fxLayout="column" fxLayoutAlign="start center">
     <h1 style="font-size: 30px;font-weight: 900;padding:15px;padding-bottom: 0%;"> Search Results </h1>
-    <div class="rectangle">
-    </div>
-    <div id="questions">
+    <div class="rectangle"></div>
+    <div id="questions" *ngIf="!noresults">
         <mat-list>
             <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">Questions</div>
             <mat-list-item *ngFor="let question of questions">
@@ -19,6 +18,11 @@
                     <mat-divider></mat-divider>
                 </div>
             </mat-list-item>
+        </mat-list>
+    </div>
+    <div id="questions" *ngIf="noresults">
+        <mat-list>
+            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">No Results found for the Query</div>
         </mat-list>
     </div>
 </div>

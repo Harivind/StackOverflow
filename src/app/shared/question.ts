@@ -1,10 +1,10 @@
 export class Question {
-    _id: string;
-    user: string;
-    heading: string;
-    description: string;
-    images: string[];
-    keywords: string[];
+    _id: String;
+    user: String;
+    heading: String;
+    description: String;
+    images: String[];
+    keywords: String[];
     upvotes: number;
     downvotes: number;
 }

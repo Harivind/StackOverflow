@@ -5,7 +5,8 @@ mat-card:hover {
 .login {
     padding: 25px;
     background: linear-gradient(to bottom, #ff9933 7%, #ffffff 98%);
-    height: 59%;
+    min-height: 59%;
+    max-height: 100%;
     width: 100%;
 }
 

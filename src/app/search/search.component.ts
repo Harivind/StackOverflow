@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   mySubscription: any;
   public questions: Question[];
   searchString:String;
-
+  public noresults: Boolean;
   constructor(private route: ActivatedRoute, private qaService: QandAService, private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -30,8 +30,9 @@ export class SearchComponent implements OnInit {
     this.searchString=a['_value'].q;
     this.qaService.searchQuestion(this.searchString).subscribe((data:any) => {
       this.questions = data.questions;
+      this.noresults=this.questions.length==0?true:false
+
     });
-    // this.questions=qaService.searchQuestion(searchString);
   }
 
   ngOnInit(): void {

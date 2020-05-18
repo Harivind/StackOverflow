@@ -30,17 +30,14 @@ export class QandAService {
     this.http
       .post("http://localhost:3000/submitQuestion", question)
       .subscribe((data) => {
-        this._resp = JSON.stringify(data);
-        console.log(data);
-        this._resp = JSON.parse(this._resp);
+        this._resp = data;
         if (this._resp.status == "Success") {
           alert("Success!");
-          return true;
+          this.router.navigateByUrl("/post?questionID=" + this._resp.questionID)
         }
         else
           alert(this._resp.status);
       });
-    return false;
   }
 
   searchQuestion(searchText: String) {
@@ -77,7 +74,6 @@ export class QandAService {
     }).subscribe(data => {
       this._resp = data;
       if (this._resp.status == "Success") {
-        alert("Success!")
         this.router.navigateByUrl("/post?questionID=" + answer.questionID)
       }
       else
@@ -88,6 +84,28 @@ export class QandAService {
   redirectTo(uri: string) {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
       this.router.navigate([uri]));
+  }
+
+  deleteAnswer(answer: any) {
+    this.http.delete("http://localhost:3000/deleteAnswer/" + answer._id).subscribe((data: any) => {
+      if (data.status == 'Success') {
+        alert("Succesfully Deleted")
+        this.router.navigateByUrl("/post?questionID=" + answer.questionID)
+      }
+      else
+        alert("Delete Failure")
+    })
+  }
+
+  deleteQuestion(question: any) {
+    this.http.delete("http://localhost:3000/deleteQuestion/" + question._id).subscribe((data: any) => {
+      if (data.status == 'Success') {
+        alert("Succesfully Deleted")
+        this.router.navigateByUrl("/")
+      }
+      else
+        alert("Delete Failure")
+    })
   }
 
 }

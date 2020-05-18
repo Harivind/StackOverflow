@@ -1,9 +1,9 @@
 export class Answer {
-    _id: string;
+    _id: String;
     questionID: number;
-    user: string;
-    description: string;
-    images: string[];
+    user:String;
+    description: String;
+    images: String[];
     upvotes: number;
     downvotes: number
 }

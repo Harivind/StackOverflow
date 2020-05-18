@@ -1,14 +1,13 @@
 <div fxLayout="column" fxLayoutAlign="space-between center">
     <mat-card class="post-card">
         <mat-card-header>
-            <div mat-card-avatar class="post-header-image"></div>
+            <img mat-card-avatar class="post-header-image" src={{user.profilePic}} alt="">
             <mat-card-title>{{post.question.heading}}</mat-card-title>
             <mat-card-subtitle>{{post.question.user}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <img mat-card-image *ngFor="let item of post.question.images" src={{item}} alt="" class="img"><br>
         <mat-card-content>
             <div>
-                <div mat-line><a href="/post?questionID={{post.question._id}}">{{post.question.heading}}</a></div>
                 <div mat-line> {{post.question.description}} </div>
                 <br>
                 <button mat-icon-button id="votes" matBadge={{post.question.upvotes-post.question.downvotes}} matBadgeColor="primary">Votes</button>
@@ -17,19 +16,22 @@
                 <mat-divider></mat-divider>
             </div>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf="currentUser!=post.question.user">
             <button mat-button>Upvote</button>
             <button mat-button>Downvote</button>
         </mat-card-actions>
+        <mat-card-actions *ngIf="currentUser==post.question.user">
+            <button mat-button (click)=deleteQuestion(post.question)>Delete Question</button>
+        </mat-card-actions>
     </mat-card>
-    <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 18px; color: black;">
+    <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 32px; color: black;">
         Answers
     </div>
 
     <div *ngFor="let answer of post.answers">
         <mat-card class="post-card">
             <mat-card-header>
-                <div mat-card-avatar class="post-header-image"></div>
+                <img mat-card-avatar class="post-header-image" src='../../assets/images/noDisplay.png' alt="">
                 <mat-card-subtitle>{{answer.user}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -42,23 +44,27 @@
                     <mat-divider></mat-divider>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions *ngIf="currentUser!=answer.user">
                 <button mat-button>Upvote</button>
                 <button mat-button>Downvote</button>
             </mat-card-actions>
+            <mat-card-actions *ngIf="currentUser==answer.user">
+                <button mat-button (click)=deleteAnswer(answer)>Delete Answer</button>
+            </mat-card-actions>
         </mat-card>
     </div>
-    <!-- </mat-list-item> -->
-    <!-- </mat-list> -->
-    <div class="askQ" fxLayout="column" fxLayoutAlign="space-between center">
-        <h1>Post Your Answer</h1>
+
+    <div class="askA" fxLayout="row" fxLayoutAlign="space-between center">
         <form [formGroup]='answer' (ngSubmit)=postAnswer() class=form>
+            <h1>Post Your Answer</h1>
+
             <mat-form-field>
                 <mat-label>Describe Your Answer</mat-label>
                 <textarea matInput formControlName="description"></textarea>
                 <mat-error>Empty Description</mat-error>
             </mat-form-field><br>
-            <input type="file" multiple accept="image/*"><br><br>
+            <input type="file" multiple (change)="onUploadChange($event)" accept="image/*"><br><br>
+            <img height="250" *ngFor="let item of base64textString" src={{item}} alt="" class="img"><br>
             <button type="submit" mat-raised-button color="primary" [disabled]="!answer.valid">Post Answer</button><br>
         </form>
     </div>

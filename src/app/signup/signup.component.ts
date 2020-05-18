@@ -30,9 +30,26 @@ export class SignupComponent implements OnInit {
       profilePic: [""],
     });
   }
+  base64textString:String;
+
+  onUploadChange(evt: any) {
+    const file = evt.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  handleReaderLoaded(e) {
+    this.base64textString=('data:image/png;base64,' + btoa(e.target.result));
+  }
 
   signup() {
     this.submitted = true;
+    this.user.value.profilePic=this.base64textString;
     this.status = this.accService.register(this.user.value);
     console.log("signup status: " + this.status);
   }
