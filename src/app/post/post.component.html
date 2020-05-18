@@ -11,8 +11,7 @@
                 <div mat-line><a href="/post?questionID={{post.question._id}}">{{post.question.heading}}</a></div>
                 <div mat-line> {{post.question.description}} </div>
                 <br>
-                <button mat-icon-button id="votes" matBadge={{post.question.upvotes-post.question.downvotes}}
-                    matBadgeColor="primary">Votes</button>
+                <button mat-icon-button id="votes" matBadge={{post.question.upvotes-post.question.downvotes}} matBadgeColor="primary">Votes</button>
                 <div mat-line></div>
                 <div mat-line></div>
                 <mat-divider></mat-divider>
@@ -26,8 +25,7 @@
     <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 18px; color: black;">
         Answers
     </div>
-    <!-- <mat-list> -->
-    <!-- <mat-list-item *ngFor="let answer of post.answers"> -->
+
     <div *ngFor="let answer of post.answers">
         <mat-card class="post-card">
             <mat-card-header>
@@ -38,8 +36,7 @@
                 <div>
                     <div mat-line> {{answer.description}} </div>
                     <br>
-                    <button mat-icon-button id="votes" matBadge={{answer.upvotes-answer.downvotes}}
-                        matBadgeColor="primary">Votes</button>
+                    <button mat-icon-button id="votes" matBadge={{answer.upvotes-answer.downvotes}} matBadgeColor="primary">Votes</button>
                     <div mat-line></div>
                     <div mat-line></div>
                     <mat-divider></mat-divider>

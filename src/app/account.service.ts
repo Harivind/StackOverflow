@@ -34,7 +34,6 @@ export class AccountService {
       }
       else
         alert("Invalid Credentials");
-      // this.router.navigate(["/"]);
     });
   }
 
@@ -46,22 +45,12 @@ export class AccountService {
 
   register(user: User) {
     this.http.post("http://localhost:3000/register", user).subscribe((data) => {
-      this._resp = JSON.stringify(data);
-      console.log(data);
-      this._resp = JSON.parse(this._resp);
-      localStorage.setItem("user", JSON.stringify(user));
+      this._resp = data
+      // localStorage.setItem("user", JSON.stringify(user));
       if (this._resp.status == "Success") this.router.navigate(["/login"]);
       else alert(this._resp.status);
     });
     if (this._resp.status == "Success") return true;
     return false;
-  }
-
-  getAll() {
-    return this.http.get<User[]>("/api/users");
-  }
-
-  getById(id: string) {
-    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
 }

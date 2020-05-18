@@ -1,5 +1,10 @@
-<div class="signup" fxLayout="column" fxLayoutAlign="space-between center">
-    <h1>Please Fill in your details</h1>
+<div class="signup" fxLayout="row" fxLayoutAlign="center center">
+    <div id="writeup">
+        <h1 style="font-weight: 900;"><span class="material-icons">
+          offline_bolt
+          </span>Join the Stack Overflow community</h1>
+
+    </div>
     <form [formGroup]='user' (ngSubmit)=signup()>
         <mat-form-field appearance="outline">
             <mat-label> Username </mat-label>

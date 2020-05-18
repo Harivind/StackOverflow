@@ -53,6 +53,16 @@ export class QandAService {
     )
   }
 
+  getUserQuestions(username: String) {
+    return this.http.get("http://localhost:3000/getUserQuestions?username="+username).pipe(
+      map((questions: Question[][]) => {
+        return questions;
+      }), catchError(error => {
+        return throwError('Something went wrong!');
+      })
+    )
+  }
+
   getPost(questionID: String) {
     return this.http.get("http://localhost:3000/getPost?questionID=" + questionID).pipe(
       map((post: Post) => {

@@ -1,5 +1,4 @@
 #toolbar {
-    color: "gray";
     height: 55px;
     border-top: 4px solid;
     border-top-color: #F48024;
@@ -27,4 +26,7 @@
 #bottom {
     background-color: black;
     text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }

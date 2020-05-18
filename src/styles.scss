@@ -6,3 +6,12 @@
     max-width: 100%;
     // text-align: center;
 }
+
+body,
+html {
+    height: 100%;
+}
+
+html {
+    background: linear-gradient(0deg, rgba(220, 229, 229, 1) 0%, rgba(250, 249, 246, 1) 50%, rgba(220, 229, 229, 1) 100%);
+}

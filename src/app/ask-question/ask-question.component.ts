@@ -21,11 +21,14 @@ export class AskQuestionComponent implements OnInit {
     this.question = this.formbuilder.group({
       heading: ["", Validators.required],
       description: ["", Validators.required],
+      user: [""],
     });
   }
 
   postQuestion() {
     this.submitted = true;
+    let user = JSON.parse(localStorage.getItem("user")).username;
+    this.question.value.user=user
     this.status = this.qaService.postQuestion(this.question.value);
     console.log("Question status: "+this.status);
   }

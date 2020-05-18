@@ -1,8 +1,25 @@
-<form [formGroup]='login' (ngSubmit)=loginUser()>
-    <label for="email">E-mail</label><br>
-    <input matInput placeholder="Johndoe@email.com" formControlName="email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-    <label for="password">Password</label><br>
-    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!login.valid">Login</button><br>
-</form>
+<div class="login" fxLayout="row" fxLayoutAlign="center center">
+    <div id="writeup">
+        <h1 style="font-weight: 900;"><span class="material-icons">
+      offline_bolt
+      </span>Log into your Stack Overflow account</h1>
+        <h2> Don't have an account yet? <a href="/signup"> Sign Up!</a></h2>
+
+    </div>
+    <form [formGroup]='login' (ngSubmit)=loginUser()>
+        <mat-form-field appearance="outline">
+            <mat-label> Email </mat-label>
+            <input matInput placeholder="Johndoe@email.com" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <mat-error>Please Enter a valid email</mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance="outline">
+            <mat-label> Enter password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+            <mat-error>Please enter your password</mat-error>
+        </mat-form-field><br>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!login.valid">Login</button><br>
+    </form>
+</div>

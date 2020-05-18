@@ -27,7 +27,7 @@
     </div>
     <div *ngIf=isUserLoggedIn>
         <a href="/profile">Profile<mat-icon>{{'face'}}</mat-icon></a>
-        <a (click)="logout()">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
+        <a (click)="logout()" style="cursor: pointer;">Log Out<mat-icon>{{'power_settings_new'}}</mat-icon></a>
     </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -1,7 +1,46 @@
-<div fxLayout="column" fxLayoutAlign="space-between center">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <img src="../../assets/images/noDisplay.png" style="height: 300px;background-color: #e67e7e;">
-        <div fxLayout="column" fxLayoutAlign="space-between center">
-            <h1></h1>
+<div fxLayout="column" fxLayoutAlign="space-between center" id="profile">
+    <div id="details" fxLayout="row" fxLayoutAlign="start center">
+        <img src={{user.profilePic}} id="DP">
+        <div fxLayout="column" fxLayoutAlign="space-between start" id="user">
+            <h1 style="font-weight: 900;font-size:30px;">{{user.username}}</h1>
+            <h2>{{user.email}}</h2>
         </div>
     </div>
+    <mat-card>User Activity</mat-card>
+    <div class="questions">
+        <mat-list>
+            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">Questions Asked</div>
+            <mat-list-item *ngFor="let question of questionsAsked">
+                <div class="list">
+                    <div mat-line><span class="material-icons">
+                      question_answer
+                      </span>
+                        <a href="/post?questionID={{question._id}}">{{question.heading}}</a></div>
+                    <div mat-line class="description"> {{question.description}} </div>
+                    <br>
+                    <div mat-line></div>
+                    <div mat-line></div>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div class="questions">
+        <mat-list>
+            <div mat-card-subtitle style="font-weight: 900;text-decoration: underline; font-size: 23px; color: black;">Questions Answered</div>
+            <mat-list-item *ngFor="let question of questionsAnswered">
+
+                <div class="list">
+                    <div mat-line><span class="material-icons">
+                      question_answer
+                      </span><a href="/post?questionID={{question._id}}">{{question.heading}}</a></div>
+                    <div mat-line class="description"> {{question.description}} </div>
+                    <br>
+                    <div mat-line></div>
+                    <div mat-line></div>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

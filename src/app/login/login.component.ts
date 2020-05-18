@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.submitted = false;
     this.login = this.formbuilder.group({
-      // firstName: ["", Validators.required],
-      // lastName: ["", Validators.required],
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
@@ -31,10 +29,7 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.submitted = true;
-    console.log(this.login.value)
     this.accService.login(this.login.value);
-    console.log("signup status: " + this.status);
-
   }
 
   get formData() {

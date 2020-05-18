@@ -1,3 +1,19 @@
 mat-card:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
+.login {
+    padding: 25px;
+    background: linear-gradient(to bottom, #ff9933 7%, #ffffff 98%);
+    height: 59%;
+    width: 100%;
+}
+
+#writeup {
+    width: 20%;
+    margin-right: 30px;
+    .h1 {
+        font-size: 30px;
+        font-weight: 900;
+    }
+}

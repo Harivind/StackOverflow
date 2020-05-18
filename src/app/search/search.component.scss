@@ -5,6 +5,7 @@
 #votes {
     background-color: rgba(98, 168, 5, 0.486);
     width: 60px;
+    margin-left: 30px;
 }
 
 #head {
@@ -24,4 +25,12 @@
 #questions {
     width: 70%;
     text-align: start;
+}
+
+.material-icons {
+    margin-right: 5px;
+}
+
+.description {
+    margin-left: 30px;
 }

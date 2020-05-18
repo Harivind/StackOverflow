@@ -29,7 +29,6 @@ export class PostComponent implements OnInit {
     };
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
       }
     });
@@ -41,6 +40,7 @@ export class PostComponent implements OnInit {
       description: ["", Validators.required]
     });
     this.qAndA.getPost(this.questionID).subscribe(data => this.post = data)
+    console.log(this.questionID)
   }
 
   postAnswer() {
